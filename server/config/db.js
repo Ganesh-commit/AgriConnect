@@ -230,7 +230,10 @@ const ensureQuickDemoAccounts = async () => {
 };
 
 const connectDB = async () => {
-  const primaryUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/agriconnect';
+  const primaryUri =
+    process.env.MONGO_URI ||
+    process.env.MONGODB_URI ||
+    'mongodb://127.0.0.1:27017/agriconnect';
   try {
     if (primaryUri.startsWith('mongodb+srv://')) {
       try {

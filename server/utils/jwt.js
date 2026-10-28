@@ -12,11 +12,12 @@ const sendTokenResponse = (user, statusCode, res, message = 'Success') => {
   const token = generateToken(user._id);
 
   const cookieExpireDays = parseInt(process.env.COOKIE_EXPIRE, 10) || 7;
+  const isProd = process.env.NODE_ENV === 'production';
   const options = {
     expires: new Date(Date.now() + cookieExpireDays * 24 * 60 * 60 * 1000),
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax'
+    secure: isProd,
+    sameSite: isProd ? 'none' : 'lax'
   };
 
   // Convert to clean object without password

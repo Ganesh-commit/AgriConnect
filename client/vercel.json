@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://agriconnect-65bh.onrender.com/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://agriconnect-65bh.onrender.com/uploads/:path*"
+    },
+    {
+      "source": "/public/:path*",
+      "destination": "https://agriconnect-65bh.onrender.com/public/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
