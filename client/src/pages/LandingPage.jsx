@@ -97,7 +97,7 @@ const LandingPage = () => {
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-800/80 border border-emerald-700/60 text-xs font-bold text-emerald-200 tracking-wide uppercase">
               <Sparkles size={14} className="text-amber-400" />
-              <span>India's Direct Kisan Marketplace</span>
+              <span>{t('kisanBadge')}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
@@ -142,7 +142,7 @@ const LandingPage = () => {
                 type="submit"
                 className="w-full sm:w-auto px-7 py-3 rounded-xl sm:rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2"
               >
-                <span>Search</span>
+                <span>{t('searchBtn')}</span>
                 <ArrowRight size={16} />
               </button>
             </form>
@@ -170,19 +170,19 @@ const LandingPage = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 bg-white/10 backdrop-blur-md rounded-3xl border border-white/15 text-center">
             <div>
               <p className="text-3xl font-extrabold text-amber-400">100%</p>
-              <p className="text-xs font-medium text-emerald-100 mt-1">Direct Farmer Sales</p>
+              <p className="text-xs font-medium text-emerald-100 mt-1">{t('directFarmerSales')}</p>
             </div>
             <div>
               <p className="text-3xl font-extrabold text-white">0%</p>
-              <p className="text-xs font-medium text-emerald-100 mt-1">Middlemen Commission</p>
+              <p className="text-xs font-medium text-emerald-100 mt-1">{t('middlemenCommission')}</p>
             </div>
             <div>
-              <p className="text-3xl font-extrabold text-amber-400">25+</p>
-              <p className="text-xs font-medium text-emerald-100 mt-1">Agricultural Categories</p>
+              <p className="text-3xl font-extrabold text-amber-400">16+</p>
+              <p className="text-xs font-medium text-emerald-100 mt-1">{t('agriCategoriesCount')}</p>
             </div>
             <div>
-              <p className="text-3xl font-extrabold text-white">Verified</p>
-              <p className="text-xs font-medium text-emerald-100 mt-1">Kisan Profiles</p>
+              <p className="text-3xl font-extrabold text-white">{t('verifiedBadgeText')}</p>
+              <p className="text-xs font-medium text-emerald-100 mt-1">{t('verifiedProfiles')}</p>
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@ const LandingPage = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-            Simple & Transparent
+            {t('simpleTransparent')}
           </span>
           <h2 className="text-3xl font-extrabold text-slate-900">
             {t('howItWorksTitle')}
@@ -234,17 +234,17 @@ const LandingPage = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
             <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-              Browse By Crop
+              {t('browseByCrop')}
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
-              Popular Produce Categories
+              {t('popularCategoriesTitle')}
             </h2>
           </div>
           <Link
             to="/crops"
             className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-800 transition-colors"
           >
-            <span>View All Listings</span>
+            <span>{t('viewAllListings')}</span>
             <ArrowRight size={16} />
           </Link>
         </div>
@@ -262,7 +262,7 @@ const LandingPage = () => {
               <div className="min-w-0">
                 <h4 className="font-extrabold text-sm leading-tight text-slate-900">{t(cat.name) || cat.name}</h4>
                 <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-emerald-700">
-                  Browse <ArrowRight size={13} />
+                  {t('browseText')} <ArrowRight size={13} />
                 </span>
               </div>
             </Link>
@@ -275,17 +275,17 @@ const LandingPage = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
             <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-              Listed Recently
+              {t('listedRecently')}
             </span>
             <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
-              Fresh today
+              {t('freshToday')}
             </h2>
           </div>
           <Link
             to="/crops"
             className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-800 transition-colors"
           >
-            <span>Explore Full Market</span>
+            <span>{t('exploreFullMarket')}</span>
             <ArrowRight size={16} />
           </Link>
         </div>
@@ -309,12 +309,12 @@ const LandingPage = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
             <span className="text-xs font-extrabold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-              Buyer interest
+              {t('buyerInterest')}
             </span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">Popular crops</h2>
+            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">{t('popularCropsTitle')}</h2>
           </div>
           <Link to="/crops?sort=popular" className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-700 hover:text-emerald-800">
-            <span>Explore popular listings</span><ArrowRight size={16} />
+            <span>{t('explorePopularListings')}</span><ArrowRight size={16} />
           </Link>
         </div>
         {loading ? (
@@ -333,26 +333,26 @@ const LandingPage = () => {
         <div className="bg-gradient-to-r from-emerald-800 to-green-900 rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-xl">
           <div className="relative z-10 max-w-2xl space-y-5">
             <span className="text-xs font-extrabold tracking-widest uppercase text-amber-400">
-              Start Trading Today
+              {t('startTradingToday')}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold leading-tight">
-              Ready to Buy Direct or Sell Your Farm Harvest?
+              {t('ctaHeading')}
             </h2>
             <p className="text-emerald-100 text-sm sm:text-base leading-relaxed">
-              Join thousands of farmers getting fair prices for their hard work, and wholesale buyers securing pure, unadulterated farm produce.
+              {t('ctaSubtext')}
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 to="/register"
                 className="px-6 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-extrabold text-sm transition-all shadow-lg shadow-amber-500/20"
               >
-                Create Free Account
+                {t('createFreeAccount')}
               </Link>
               <Link
                 to="/crops"
                 className="px-6 py-3.5 rounded-2xl bg-emerald-950/60 hover:bg-emerald-950 text-white font-bold text-sm border border-emerald-600 transition-all"
               >
-                Browse Marketplace
+                {t('browseMarketplace')}
               </Link>
             </div>
           </div>

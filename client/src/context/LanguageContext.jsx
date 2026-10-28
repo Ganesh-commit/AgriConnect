@@ -1,5 +1,12 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { translations } from '../i18n/translations';
+import React, { createContext, useContext, useState } from 'react';
+import {
+  translations,
+  translateCropName,
+  translateCropDescription,
+  translateUnit,
+  translateLocationText,
+  translateFarmerName
+} from '../i18n/translations';
 
 const LanguageContext = createContext(null);
 
@@ -16,18 +23,40 @@ export const LanguageProvider = ({ children }) => {
   };
 
   const t = (key) => {
+    if (!key) return '';
     if (translations[language] && translations[language][key]) {
       return translations[language][key];
     }
-    // Fallback to English
+    if (language === 'te') {
+      const teCrop = translateCropName(key, 'te');
+      if (teCrop !== key) return teCrop;
+    }
     if (translations.en && translations.en[key]) {
       return translations.en[key];
     }
     return key;
   };
 
+  const tCropName = (name) => translateCropName(name, language);
+  const tCropDesc = (description, name, category) =>
+    translateCropDescription(description, name, category, language);
+  const tUnit = (unit) => translateUnit(unit, language);
+  const tLocation = (locStr) => translateLocationText(locStr, language);
+  const tFarmer = (name) => translateFarmerName(name, language);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        t,
+        tCropName,
+        tCropDesc,
+        tUnit,
+        tLocation,
+        tFarmer
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

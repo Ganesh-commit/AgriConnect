@@ -22,7 +22,7 @@ const getCategoryColor = (category) => {
 };
 
 const CropCard = ({ crop }) => {
-  const { t } = useLanguage();
+  const { t, tCropName, tCropDesc, tUnit, tLocation, tFarmer } = useLanguage();
 
   // Helper for image URLs (handles relative uploads vs external Cloudinary/Unsplash URLs)
   const apiOrigin = (import.meta.env.VITE_API_URL || '').replace(/\/api\/?$/, '');
@@ -96,20 +96,22 @@ const CropCard = ({ crop }) => {
           <div className="flex items-center gap-1.5 text-xs text-slate-500 mb-1.5">
             <MapPin size={14} className="text-emerald-600 shrink-0" />
             <span className="truncate">
-              {[crop.location?.village, crop.location?.district, crop.location?.state]
-                .filter(Boolean)
-                .join(', ') || 'Andhra Pradesh / Telangana'}
+              {tLocation(
+                [crop.location?.village, crop.location?.district, crop.location?.state]
+                  .filter(Boolean)
+                  .join(', ') || 'Andhra Pradesh, Telangana'
+              )}
             </span>
           </div>
 
           {/* Crop Title */}
           <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors line-clamp-1">
-            {crop.name}
+            {tCropName(crop.name)}
           </h3>
 
           {/* Short description */}
           <p className="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed">
-            {crop.description}
+            {tCropDesc(crop.description, crop.name, crop.category)}
           </p>
         </div>
 
@@ -118,29 +120,29 @@ const CropCard = ({ crop }) => {
           <div className="flex items-center gap-1.5">
             <UserCheck size={14} className="text-emerald-600" />
             <span className="font-medium truncate max-w-[120px]">
-              {crop.farmer?.name || 'Local Farmer'}
+              {tFarmer(crop.farmer?.name) || t('localFarmer')}
             </span>
             {crop.farmer?.isVerified && (
               <span className="inline-flex items-center gap-0.5 text-[10px] font-bold text-blue-700" title="Verified farmer">
-                <BadgeCheck size={13} /> Verified
+                <BadgeCheck size={13} /> {t('verifiedBadgeText')}
               </span>
             )}
           </div>
           <span className="font-semibold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">
-            {crop.quantity} {crop.unit} left
+            {crop.quantity} {tUnit(crop.unit)} {t('leftInStock')}
           </span>
         </div>
 
         {/* Pricing and Action */}
         <div className="flex items-center justify-between pt-2">
           <div>
-            <span className="text-xs text-slate-400 block font-medium">Price</span>
+            <span className="text-xs text-slate-400 block font-medium">{t('priceLabel')}</span>
             <div className="flex items-baseline gap-1">
               <span className="text-xl font-extrabold text-emerald-800">
                 ₹{crop.pricePerUnit}
               </span>
               <span className="text-xs font-semibold text-slate-500">
-                / {crop.unit}
+                / {tUnit(crop.unit)}
               </span>
             </div>
           </div>

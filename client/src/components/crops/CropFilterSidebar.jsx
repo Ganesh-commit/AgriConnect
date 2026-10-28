@@ -34,7 +34,7 @@ const CropFilterSidebar = ({
       {/* Categories */}
       <div className="space-y-3">
         <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
-          Categories
+          {t('categoriesLabel')}
         </label>
         <div className="flex flex-wrap gap-1.5">
           {categories.map((cat) => {
@@ -67,7 +67,7 @@ const CropFilterSidebar = ({
             <MapPin size={16} className="absolute left-3 top-3 text-slate-400" />
             <input
               type="text"
-              placeholder={t('state') + ' (e.g. Andhra Pradesh)'}
+              placeholder={t('statePlaceholder')}
               value={filters.state || ''}
               onChange={(e) => onFilterChange('state', e.target.value)}
               className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors"
@@ -77,7 +77,7 @@ const CropFilterSidebar = ({
             <MapPin size={16} className="absolute left-3 top-3 text-slate-400" />
             <input
               type="text"
-              placeholder={t('district') + ' (e.g. Guntur, Kurnool)'}
+              placeholder={t('districtPlaceholder')}
               value={filters.district || ''}
               onChange={(e) => onFilterChange('district', e.target.value)}
               className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors"
@@ -96,7 +96,7 @@ const CropFilterSidebar = ({
             <span className="absolute left-3 top-2.5 text-xs text-slate-400">₹</span>
             <input
               type="number"
-              placeholder="Min"
+              placeholder={t('minPricePlaceholder')}
               min="0"
               value={filters.minPrice || ''}
               onChange={(e) => onFilterChange('minPrice', e.target.value)}
@@ -107,7 +107,7 @@ const CropFilterSidebar = ({
             <span className="absolute left-3 top-2.5 text-xs text-slate-400">₹</span>
             <input
               type="number"
-              placeholder="Max"
+              placeholder={t('maxPricePlaceholder')}
               min="0"
               value={filters.maxPrice || ''}
               onChange={(e) => onFilterChange('maxPrice', e.target.value)}
@@ -160,7 +160,7 @@ const CropFilterSidebar = ({
           <option value="newest">{t('newest')}</option>
           <option value="price-asc">{t('priceLowHigh')}</option>
           <option value="price-desc">{t('priceHighLow')}</option>
-          <option value="popular">Popular</option>
+          <option value="popular">{t('popularSort')}</option>
         </select>
       </div>
     </div>

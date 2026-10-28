@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, CheckCircle2, ArrowUpRight, Package } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 const apiOrigin = (import.meta.env.VITE_API_URL || '').replace(/\/api\/?$/, '');
 const fallbackCropImage = `${apiOrigin}/public/placeholder-crop.jpg`;
@@ -279,6 +280,7 @@ export function MarkdownRenderer({ content, children, compact = false }) {
  * Renders clickable live marketplace crop cards returned in `cards` from tool calls.
  */
 export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
+  const { t, tCropName, tUnit, tLocation, tFarmer } = useLanguage();
   if (!Array.isArray(cards) || cards.length === 0) return null;
 
   return (
@@ -290,9 +292,14 @@ export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
       >
         {cards.map((card) => {
           const imgSrc = resolveCardImageUrl(card.imageUrl);
-          const locationText = [card.location?.district, card.location?.state]
-            .filter(Boolean)
-            .join(', ');
+          const locationText = tLocation(
+            [card.location?.district, card.location?.state]
+              .filter(Boolean)
+              .join(', ')
+          );
+          const displayName = tCropName(card.name);
+          const displayUnit = tUnit(card.unit);
+          const displayFarmer = tFarmer(card.farmerName);
 
           const tierBadgeColor =
             card.priceTier === 'low'
@@ -311,7 +318,7 @@ export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
               <div className="w-16 h-16 rounded-xl overflow-hidden bg-slate-100 shrink-0 relative">
                 <img
                   src={imgSrc}
-                  alt={card.name}
+                  alt={displayName}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
@@ -323,7 +330,7 @@ export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-1">
                   <h4 className="text-xs font-extrabold text-slate-900 truncate group-hover:text-emerald-700">
-                    {card.name}
+                    {displayName}
                   </h4>
                   <ArrowUpRight
                     size={13}
@@ -333,7 +340,7 @@ export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
 
                 <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
                   <span className="text-xs font-black text-emerald-700">
-                    ₹{card.pricePerUnit}/{card.unit}
+                    ₹{card.pricePerUnit}/{displayUnit}
                   </span>
                   {card.priceTier && (
                     <span
@@ -347,7 +354,7 @@ export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
                 <div className="flex items-center gap-2 text-[10px] text-slate-500 mt-1 truncate">
                   <span className="inline-flex items-center gap-0.5 font-semibold text-slate-600">
                     <Package size={10} className="text-emerald-600" />
-                    {card.quantityAvailable} {card.unit}
+                    {card.quantityAvailable} {displayUnit}
                   </span>
                   {locationText && (
                     <span className="inline-flex items-center gap-0.5 truncate">
@@ -358,11 +365,11 @@ export function ChatCropCards({ cards = [], compact = false, onCardClick }) {
                 </div>
 
                 <div className="flex items-center gap-1 text-[10px] text-slate-500 mt-0.5">
-                  <span className="truncate">{card.farmerName}</span>
+                  <span className="truncate">{displayFarmer}</span>
                   {card.verified && (
                     <span className="inline-flex items-center gap-0.5 text-blue-600 font-bold shrink-0">
                       <CheckCircle2 size={10} />
-                      Verified
+                      {t('verifiedBadgeText')}
                     </span>
                   )}
                 </div>

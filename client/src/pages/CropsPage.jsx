@@ -105,7 +105,7 @@ const CropsPage = () => {
             {t('marketplace')}
           </h1>
           <p className="text-sm text-slate-500 mt-1">
-            Browse verified crops listed directly by farmers across India
+            {t('marketplaceSubtitle')}
           </p>
         </div>
 
@@ -182,7 +182,7 @@ const CropsPage = () => {
                 onClick={() => setMobileFilterOpen(false)}
                 className="w-full py-3 rounded-xl bg-emerald-700 text-white font-bold text-sm shadow-md"
               >
-                Apply Filters
+                {t('applyFilters')}
               </button>
             </div>
           </div>
@@ -193,8 +193,8 @@ const CropsPage = () => {
           {/* Result Count and Sort Indicator */}
           <div className="flex items-center justify-between text-xs text-slate-500">
             <span>
-              Showing <strong className="text-slate-800">{crops.length}</strong> of{' '}
-              <strong className="text-slate-800">{pagination.total}</strong> produce listings
+              {t('showingLabel')} <strong className="text-slate-800">{crops.length}</strong> {t('ofLabel')}{' '}
+              <strong className="text-slate-800">{pagination.total}</strong> {t('produceListingsLabel')}
             </span>
             {filters.category && (
               <span className="bg-emerald-50 text-emerald-800 font-bold px-2.5 py-1 rounded-lg border border-emerald-200">
@@ -211,9 +211,9 @@ const CropsPage = () => {
             </div>
           ) : crops.length === 0 ? (
             <EmptyState
-              title="No produce found"
+              title={t('noCropsFound')}
               description="No crops matched your current filter criteria. Try clearing some filters or searching with different keywords."
-              actionText="Reset All Filters"
+              actionText={t('resetFilters')}
               onAction={handleResetFilters}
             />
           ) : (

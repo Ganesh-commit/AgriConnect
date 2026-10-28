@@ -38,7 +38,7 @@ const CropDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth();
-  const { t } = useLanguage();
+  const { t, tCropName, tCropDesc, tUnit, tLocation, tFarmer } = useLanguage();
 
   const [crop, setCrop] = useState(null);
   const [reviewsData, setReviewsData] = useState({ averageRating: 0, totalReviews: 0, reviews: [] });
@@ -279,13 +279,13 @@ const CropDetailPage = () => {
           <div className="bg-white p-8 rounded-3xl border border-slate-200/80 shadow-xs space-y-6">
             <h2 className="text-xl font-extrabold text-slate-900">Produce Overview</h2>
             <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-line">
-              {crop.description}
+              {tCropDesc(crop.description, crop.name, crop.category)}
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
               <div className="p-3 bg-slate-50 rounded-2xl">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
-                  Category
+                  {t('categoryFilter')}
                 </span>
                 <span className="text-sm font-bold text-slate-800">
                   {t(crop.category) || crop.category}
@@ -303,10 +303,10 @@ const CropDetailPage = () => {
 
               <div className="p-3 bg-slate-50 rounded-2xl">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
-                  Available Quantity
+                  {t('available')}
                 </span>
                 <span className="text-sm font-bold text-emerald-800">
-                  {crop.quantity} {crop.unit}
+                  {crop.quantity} {tUnit(crop.unit)}
                 </span>
               </div>
             </div>
@@ -484,14 +484,16 @@ const CropDetailPage = () => {
             <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700">
               <MapPin size={16} />
               <span>
-                {[crop.location?.village, crop.location?.district, crop.location?.state]
-                  .filter(Boolean)
-                  .join(', ')}
+                {tLocation(
+                  [crop.location?.village, crop.location?.district, crop.location?.state]
+                    .filter(Boolean)
+                    .join(', ')
+                )}
               </span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
-              {crop.name}
+              {tCropName(crop.name)}
             </h1>
 
             <div className="flex items-baseline gap-2 pt-2 border-t border-slate-100">
@@ -499,7 +501,7 @@ const CropDetailPage = () => {
                 ₹{crop.pricePerUnit}
               </span>
               <span className="text-sm font-bold text-slate-500">
-                per {crop.unit}
+                / {tUnit(crop.unit)}
               </span>
             </div>
           </div>
@@ -520,12 +522,12 @@ const CropDetailPage = () => {
               <div>
                 <div className="flex items-center gap-1.5">
                   <h3 className="font-extrabold text-base text-white">
-                    {crop.farmer?.name}
+                    {tFarmer(crop.farmer?.name)}
                   </h3>
                   <ShieldCheck size={16} className="text-emerald-300" />
                 </div>
                 <p className="text-xs text-emerald-200">
-                  Verified Farmer • {crop.farmer?.location?.district || 'Andhra Pradesh'}
+                  {t('verifiedBadgeText')} • {tLocation(crop.farmer?.location?.district || 'Andhra Pradesh')}
                 </p>
               </div>
             </div>
