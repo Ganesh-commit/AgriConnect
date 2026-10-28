@@ -1,0 +1,44 @@
+{
+  "name": "agriconnect-server",
+  "version": "1.0.0",
+  "description": "Backend API for AgriConnect - Direct Farmer-to-Buyer Marketplace",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node seed.js",
+    "fetch-images": "node scripts/fetchImages.js",
+    "test:llm": "node scripts/testLlm.js",
+    "test:agent": "node --test scripts/testChatAgent.js",
+    "test": "node --test scripts/testChatAgent.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.41.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^10.2.1",
+    "socket.io": "^4.8.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".mongodb-data/*",
+      "uploads/*",
+      "data/*.json"
+    ]
+  }
+}

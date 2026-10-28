@@ -1,0 +1,51 @@
+# Environment variables & secrets (NEVER commit .env files)
+.env
+.env.*
+server/.env
+server/.env.*
+client/.env
+client/.env.*
+!.env.example
+!server/.env.example
+!client/.env.example
+
+# Dependencies
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# Build & distribution outputs
+dist/
+dist-ssr/
+build/
+client/dist/
+server/dist/
+
+# Local MongoDB data & runtime uploads
+data/db/
+.mongodb-data/
+server/.mongodb-data/
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Python / AI caches
+__pycache__/
+*.py[cod]
+
+# Logs & OS / Editor files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

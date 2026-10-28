@@ -1,0 +1,73 @@
+[
+  {
+    "title": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "shortCode": "PM-KISAN",
+    "category": "Income Support",
+    "state": "All India",
+    "summary": "Central Sector scheme providing direct income support to landholding farmer families across India. Check the official portal for latest eligibility criteria, e-KYC requirements, and installment status.",
+    "officialUrl": "https://pmkisan.gov.in/",
+    "helpline": "155261 / 011-24300606",
+    "isActive": true
+  },
+  {
+    "title": "PMFBY (Pradhan Mantri Fasal Bima Yojana)",
+    "shortCode": "PMFBY",
+    "category": "Crop Insurance",
+    "summary": "Government-sponsored crop insurance scheme protecting farmers against non-preventable natural risks from pre-sowing to post-harvest. Visit the official site for notified crops, premium calculator, and claim reporting.",
+    "state": "All India",
+    "officialUrl": "https://pmfby.gov.in/",
+    "helpline": "14447",
+    "isActive": true
+  },
+  {
+    "title": "YSR Rythu Bharosa / Annadata Sukhibhava (Andhra Pradesh)",
+    "shortCode": "AP-RYTHU",
+    "category": "Income Support",
+    "state": "Andhra Pradesh",
+    "summary": "State agricultural investment support and farmer welfare programme in Andhra Pradesh. Check the official state agriculture portal or your local Rythu Seva Kendra / RBK for current guidelines.",
+    "officialUrl": "https://apagrisnet.gov.in/",
+    "helpline": "155251",
+    "isActive": true
+  },
+  {
+    "title": "Rythu Bharosa / Rythu Bandhu (Telangana)",
+    "shortCode": "TG-RYTHU",
+    "category": "Income Support",
+    "state": "Telangana",
+    "summary": "Telangana government farmer investment support scheme per season. Check the official Telangana Agriculture Department portal for current rules and disbursement updates.",
+    "officialUrl": "https://agri.telangana.gov.in/",
+    "helpline": "040-23383520",
+    "isActive": true
+  },
+  {
+    "title": "e-NAM (National Agriculture Market)",
+    "shortCode": "e-NAM",
+    "category": "Market & Infrastructure",
+    "state": "All India",
+    "summary": "Pan-India electronic trading portal networking existing APMC mandis to create a unified national market for agricultural commodities.",
+    "officialUrl": "https://www.enam.gov.in/",
+    "helpline": "1800-270-0224",
+    "isActive": true
+  },
+  {
+    "title": "Kisan Credit Card (KCC) & MyScheme Agriculture Portal",
+    "shortCode": "KCC",
+    "category": "Credit & Loans",
+    "state": "All India",
+    "summary": "Timely and affordable short-term institutional credit for cultivation, post-harvest expenses, and allied activities. Check official government portals for bank application procedures.",
+    "officialUrl": "https://www.myscheme.gov.in/schemes/kcc",
+    "helpline": "1800-180-1551",
+    "isActive": true
+  },
+  {
+    "title": "Soil Health Card Scheme",
+    "shortCode": "SHC",
+    "category": "Soil & Inputs",
+    "state": "All India",
+    "summary": "Provides soil nutrient status cards and crop-wise fertilizer recommendations to farmers to improve productivity through judicious input use.",
+    "officialUrl": "https://soilhealth.dac.gov.in/",
+    "helpline": "1800-180-1551",
+    "isActive": true
+  }
+]
+
